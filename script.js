@@ -59,3 +59,17 @@ window.logoutUser = async function(){
 await signOut(auth);
 alert("Logged Out");
 }
+window.handleRegister = async function(event){
+event.preventDefault();
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const confirmPassword = document.getElementById("confirmPassword").value;
+
+if(password !== confirmPassword){
+alert("Passwords do not match!");
+return;
+}
+
+registerUser(email,password);
+}
