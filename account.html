@@ -29,11 +29,12 @@
 <h2>Join Premium Services</h2>
 <br>
 
-<form onsubmit="createAccount(event)">
+<form onsubmit="handleRegister(event)">
 <input type="text" placeholder="Full Name" required>
-<input type="email" placeholder="Email Address" required>
-<input type="password" placeholder="Password" required>
-<input type="password" placeholder="Confirm Password" required>
+<input type="email" id="email" placeholder="Email Address" required>
+
+<input type="password" id="password" placeholder="Password" required>
+<input type="password" id="confirmPassword" placeholder="Confirm Password" required>
 
 <button>Create Account</button>
 
