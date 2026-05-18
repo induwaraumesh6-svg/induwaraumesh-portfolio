@@ -257,3 +257,27 @@ max-width:360px;
 flex-direction:column;
 }
 }
+.nav-links{
+display:flex;
+align-items:center;
+gap:18px;
+list-style:none;
+}
+
+.register-btn{
+background:#22c55e;
+padding:10px 20px;
+border-radius:10px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.login-btn-nav{
+background:#38bdf8;
+padding:10px 20px;
+border-radius:10px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
