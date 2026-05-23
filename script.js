@@ -9,7 +9,7 @@ const firebaseConfig = {
   measurementId: "G-J5V705HEV2"
 };
 
-// Firebase SDK Imports
+// Firebase Imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
@@ -23,37 +23,25 @@ import {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// ORDER FORM
-function sendOrder(e){
-  e.preventDefault();
-  document.getElementById("msg").innerHTML =
-  "✅ Order Submitted Successfully!";
-}
-
-// CREATE ACCOUNT MESSAGE
-function createAccount(e){
-  e.preventDefault();
-  document.getElementById("accountmsg").innerHTML =
-  "✅ Account created successfully!";
-}
-
-// REGISTER
+// REGISTER USER
 window.registerUser = async function(email, password){
+
   try{
 
     await createUserWithEmailAndPassword(auth, email, password);
 
     alert("Account Created Successfully!");
 
-    // Register success -> Login page
     window.location.href = "login.html";
 
   }catch(error){
+
     alert(error.message);
+
   }
 }
 
-// LOGIN
+// LOGIN USER
 window.loginUser = async function(email, password){
 
   try{
@@ -62,22 +50,27 @@ window.loginUser = async function(email, password){
 
     alert("Login Successful!");
 
-    // Login success -> Profile page
     window.location.href = "profile.html";
 
   }catch(error){
+
     alert(error.message);
+
   }
 }
 
-// LOGOUT
-window.logoutUser = async function(){
+// HANDLE LOGIN FORM
+window.handleLogin = async function(event){
 
-  await signOut(auth);
+  event.preventDefault();
 
-  alert("Logged Out");
+  const email =
+  document.getElementById("email").value;
 
-  window.location.href = "index.html";
+  const password =
+  document.getElementById("password").value;
+
+  loginUser(email, password);
 }
 
 // HANDLE REGISTER FORM
@@ -85,9 +78,11 @@ window.handleRegister = async function(event){
 
   event.preventDefault();
 
-  const email = document.getElementById("email").value;
+  const email =
+  document.getElementById("email").value;
 
-  const password = document.getElementById("password").value;
+  const password =
+  document.getElementById("password").value;
 
   const confirmPassword =
   document.getElementById("confirmPassword").value;
@@ -102,14 +97,12 @@ window.handleRegister = async function(event){
   registerUser(email, password);
 }
 
-// HANDLE LOGIN FORM
-window.handleLogin = async function(event){
+// LOGOUT
+window.logoutUser = async function(){
 
-  event.preventDefault();
+  await signOut(auth);
 
-  const email = document.getElementById("email").value;
+  alert("Logged Out");
 
-  const password = document.getElementById("password").value;
-
-  loginUser(email, password);
+  window.location.href = "index.html";
 }
