@@ -35,25 +35,25 @@ window.handleLogin = async function(event){
   const password =
   document.getElementById("password").value;
 
-  try{
+ try{
 
-    const userCredential =
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+  const userCredential =
+  await signInWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
 
-    alert("Login Successful!");
+  alert("Login Successful!");
 
-    window.location.href = "index.html";
+  // window.location.href = "index.html";
 
-  }catch(error){
+}catch(error){
 
-    alert(error.message);
+  alert(error.message);
 
-    console.log(error);
+  console.log(error);
 
-  }
+}
 
 }
