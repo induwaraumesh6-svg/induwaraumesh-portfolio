@@ -66,50 +66,49 @@ button:hover{
 
 <div class="login-box">
 
-  <h2>Login</h2>
+<h2>Login</h2>
 
-  <form onsubmit="handleLogin(event)">
+<input
+type="email"
+id="email"
+placeholder="Enter Email"
+required
+>
 
-    <input
-      type="email"
-      id="email"
-      placeholder="Enter Email"
-      required
-    >
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+required
+>
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Enter Password"
-      required
-    >
-
-    <button type="submit">
-      Login
-    </button>
-
-  </form>
+<button id="loginBtn">
+Login
+</button>
 
 </div>
 
+
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  getAuth,
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+getAuth,
+signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC1xJ34Gx5xZGbFCIGOWjhjwMCfKTNPgVk",
-  authDomain: "induwaraportfolio-d8d82.firebaseapp.com",
-  projectId: "induwaraportfolio-d8d82",
-  storageBucket: "induwaraportfolio-d8d82.firebasestorage.app",
-  messagingSenderId: "72123389540",
-  appId: "1:72123389540:web:f395f661a90d9cf00df589",
-  measurementId: "G-J5V705HEV2"
+apiKey: "AIzaSyC1xJ34Gx5xZGbFCIGOWjhjwMCfKTNPgVk",
+authDomain: "induwaraportfolio-d8d82.firebaseapp.com",
+projectId: "induwaraportfolio-d8d82",
+storageBucket: "induwaraportfolio-d8d82.firebasestorage.app",
+messagingSenderId: "72123389540",
+appId: "1:72123389540:web:f395f661a90d9cf00df589",
+measurementId: "G-J5V705HEV2"
 };
 
 
@@ -118,35 +117,37 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 
-window.handleLogin = async function(event){
+document
+.getElementById("loginBtn")
+.addEventListener("click", async () => {
 
-  event.preventDefault();
+const email =
+document.getElementById("email").value;
 
-  const email =
-  document.getElementById("email").value;
+const password =
+document.getElementById("password").value;
 
-  const password =
-  document.getElementById("password").value;
+try{
 
-  try{
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+alert("Login Successful!");
 
-    alert("Login Successful!");
+window.location.href = "index.html";
 
-    window.location.href = "index.html";
+}catch(error){
 
-  }catch(error){
+alert(error.message);
 
-    alert(error.message);
-
-  }
+console.log(error);
 
 }
+
+});
 
 </script>
 
