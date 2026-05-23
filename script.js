@@ -3,9 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 
 import {
   getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut
+  signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
@@ -26,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 
-// LOGIN
+// LOGIN FUNCTION
 window.handleLogin = async function(event){
 
   event.preventDefault();
@@ -39,15 +37,23 @@ window.handleLogin = async function(event){
 
   try{
 
-    await signInWithEmailAndPassword(auth, email, password);
+    const userCredential =
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
     alert("Login Successful!");
 
-    window.location.href = "profile.html";
+    window.location.href = "index.html";
 
   }catch(error){
 
     alert(error.message);
 
+    console.log(error);
+
   }
+
 }
