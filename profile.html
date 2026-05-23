@@ -1,60 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Induwara Umesh</title>
 
-<title>Profile</title>
+<link rel="stylesheet" href="style.css">
 
 <style>
 
 body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0f172a;
-  color:white;
+margin:0;
+font-family:Arial, sans-serif;
+background:#0f172a;
+color:white;
 }
 
-.profile-box{
-  width:350px;
-  margin:100px auto;
-  background:#1e293b;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 0 20px rgba(0,0,0,0.5);
+header{
+background:#111827;
+padding:15px 30px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-img{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:20px;
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-h1{
-  margin:10px 0;
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#38bdf8;
 }
 
-p{
-  color:#cbd5e1;
+ul{
+display:flex;
+gap:20px;
+list-style:none;
+padding:0;
+margin:0;
 }
 
-button{
-  margin-top:20px;
-  padding:12px 20px;
-  border:none;
-  border-radius:10px;
-  background:#38bdf8;
-  color:white;
-  cursor:pointer;
-  font-size:16px;
+ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
 }
 
-button:hover{
-  background:#0ea5e9;
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:60px 10%;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.hero-text{
+max-width:500px;
+}
+
+.hero-text h1{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.hero-text p{
+font-size:18px;
+line-height:1.6;
+color:#cbd5e1;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+background:#38bdf8;
+padding:14px 28px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.hero-image img{
+width:100%;
+max-width:500px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
+
+.login-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:#38bdf8;
+padding:12px 25px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+z-index:9999;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#111827;
+margin-top:50px;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-text h1{
+font-size:36px;
+}
+
+ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
 }
 
 </style>
@@ -62,31 +136,62 @@ button:hover{
 
 <body>
 
-<div class="profile-box">
+<header>
+<nav>
 
-<img src="https://i.imgur.com/6VBx3io.png">
+<div class="logo">Induwara Umesh</div>
 
-<h1>Welcome Induwara</h1>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="payments.html">Payments</a></li>
+<li><a href="contact.html">Contact</a></li>
 
-<p>Your account is successfully logged in.</p>
+<li>
+<a href="account.html" class="register-btn">
+Register
+</a>
+</li>
 
-<button onclick="logout()">
-Logout
-</button>
+<li>
+<a href="login.html" class="login-btn-nav">
+Login
+</a>
+</li>
+</ul>
 
+</nav>
+</header>
+
+<a href="login.html" class="login-btn">Login</a>
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>Premium Digital Store</h1>
+
+<p>
+Modern websites, graphic design, software development,
+tech reviews, branding solutions, online ordering systems
+and payment integrations.
+</p>
+
+<a class="btn" href="services.html">
+Explore Services
+</a>
 </div>
 
-<script>
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Premium Website Design">
+</div>
 
-function logout(){
+</section>
 
-  alert("Logged Out");
+<footer>
+© 2026 Induwara Umesh Premium Store
+</footer>
 
-  window.location.href = "login.html";
-
-}
-
-</script>
+<script type="module" src="script.js"></script>
 
 </body>
 </html>
