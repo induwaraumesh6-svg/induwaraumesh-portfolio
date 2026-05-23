@@ -1,3 +1,14 @@
+// Firebase Imports
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
 // Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyC1xJ34Gx5xZGbFCIGOWjhjwMCfKTNPgVk",
@@ -9,40 +20,22 @@ const firebaseConfig = {
   measurementId: "G-J5V705HEV2"
 };
 
-// Firebase Imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// REGISTER USER
-window.registerUser = async function(email, password){
 
-  try{
+// LOGIN
+window.handleLogin = async function(event){
 
-    await createUserWithEmailAndPassword(auth, email, password);
+  event.preventDefault();
 
-    alert("Account Created Successfully!");
+  const email =
+  document.getElementById("email").value;
 
-    window.location.href = "login.html";
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-}
-
-// LOGIN USER
-window.loginUser = async function(email, password){
+  const password =
+  document.getElementById("password").value;
 
   try{
 
@@ -57,52 +50,4 @@ window.loginUser = async function(email, password){
     alert(error.message);
 
   }
-}
-
-// HANDLE LOGIN FORM
-window.handleLogin = async function(event){
-
-  event.preventDefault();
-
-  const email =
-  document.getElementById("email").value;
-
-  const password =
-  document.getElementById("password").value;
-
-  loginUser(email, password);
-}
-
-// HANDLE REGISTER FORM
-window.handleRegister = async function(event){
-
-  event.preventDefault();
-
-  const email =
-  document.getElementById("email").value;
-
-  const password =
-  document.getElementById("password").value;
-
-  const confirmPassword =
-  document.getElementById("confirmPassword").value;
-
-  if(password !== confirmPassword){
-
-    alert("Passwords do not match!");
-
-    return;
-  }
-
-  registerUser(email, password);
-}
-
-// LOGOUT
-window.logoutUser = async function(){
-
-  await signOut(auth);
-
-  alert("Logged Out");
-
-  window.location.href = "index.html";
 }
