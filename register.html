@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.register-box{
+background:#1e293b;
+padding:40px;
+border-radius:20px;
+width:320px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h2{
+color:white;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:20px;
+border:none;
+border-radius:10px;
+background:#38bdf8;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="register-box">
+
+<h2>Create Account</h2>
+
+<input type="email" id="email" placeholder="Enter Email">
+
+<input type="password" id="password" placeholder="Enter Password">
+
+<button id="registerBtn">
+Register
+</button>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+const firebaseConfig = {
+apiKey: "AIzaSyC1xJ34Gx5xZGbFCIGOWjhjwMCfKTNPgVk",
+authDomain: "induwaraportfolio-d8d82.firebaseapp.com",
+projectId: "induwaraportfolio-d8d82",
+storageBucket: "induwaraportfolio-d8d82.firebasestorage.app",
+messagingSenderId: "72123389540",
+appId: "1:72123389540:web:f395f661a90d9cf00df589",
+measurementId: "G-J5V705HEV2"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+document
+.getElementById("registerBtn")
+.addEventListener("click", async () => {
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+try{
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+alert("Account Created Successfully!");
+
+window.location.href="login.html";
+
+}catch(error){
+
+alert(error.message);
+
+console.log(error);
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
